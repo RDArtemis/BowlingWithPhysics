@@ -6,12 +6,13 @@ public class BallController : MonoBehaviour
 
 {
     [SerializeField] private float force = 1f;
-    [SerializeField] private InputManager inputManager;
     [SerializeField] private Transform ballAnchor;
+    [SerializeField] private Transform launchIndicator;
 
+    private InputManager inputManager;
     private bool isBallLaunched;
-    private Rigidbody  ballRB;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Rigidbody ballRB;
+
     void Start()
     {
         //get reference to RigidBody
@@ -31,12 +32,7 @@ public class BallController : MonoBehaviour
         isBallLaunched = true;
         transform.parent = null;
         ballRB.isKinematic = false;
-        ballRB.AddForce(transform.forward * force, ForceMode.Impulse);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ballRB.AddForce(launchIndicator.forward * force, ForceMode.Impulse);
+        launchIndicator.gameObject.SetActive(false);
     }
 }
