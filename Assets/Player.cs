@@ -11,12 +11,10 @@ public class Player : MonoBehaviour
     {
         inputManager.OnMove.AddListener(MovePlayer);
         rb = GetComponent<Rigidbody>();
-
-    }
-
+     }
     private void MovePlayer(Vector2 direction)
     {
         Vector3 moveDirection = new(direction.x, 0f, direction.y);
         rb.AddForce(speed * moveDirection);
     }
-}
+ }
