@@ -11,6 +11,9 @@ public class Gutter : MonoBehaviour
         ballRigidBody.linearVelocity = Vector3.zero;
         ballRigidBody.angularVelocity = Vector3.zero;
 
-        ballRigidBody.AddForce(transform.forward * velocityMagnitude, ForceMode.VelocityChange);
+        if (triggeredBody.CompareTag("Ball"))
+        {
+            ballRigidBody.AddForce(transform.forward * velocityMagnitude, ForceMode.VelocityChange);
+        }
     }
 }
